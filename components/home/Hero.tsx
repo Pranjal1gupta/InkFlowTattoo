@@ -102,6 +102,25 @@ export function Hero() {
         <motion.div variants={inkDropVariants(4)} className="absolute top-2/3 left-1/4 w-3.5 h-3.5 bg-gradient-to-r from-destructive/40 to-secondary/40 rounded-full opacity-35" />
       </motion.div>
 
+      {/* Animated Floating Ball - Bottom Right */}
+      <motion.div 
+        className="absolute bottom-10 right-5 w-10 h-10 rounded-full opacity-35"
+        style={{
+          background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(162, 155, 254, 0.9))",
+          filter: "blur(1px)",
+        }}
+        animate={{
+          x: [-240, 100, -180, 220, -120, 160, 0],
+          y: [-160, 180, -120, 100, -200, 140, 0],
+        }}
+        transition={{
+          duration: 34,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.2, 0.35, 0.55, 0.7, 0.85, 1],
+        }}
+      />
+
       {/* Tattoo Machine/Pen - Main */}
       <motion.div 
         className="absolute top-10 right-20 w-16 h-6 opacity-25"
@@ -229,7 +248,7 @@ export function Hero() {
             r="3" 
             fill="#ff4757" 
             opacity="0.8"
-            animate={{ cy: [28, 32, 28], r: [3, 4, 3] }}
+            animate={{ cy: [28, 32, 28], scale: [1, 1.33, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.path
