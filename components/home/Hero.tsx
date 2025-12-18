@@ -2,6 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Users } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 
 const tattooPatternUrl =
   "url('data:image/svg+xml,%3Csvg width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22%3E%3Ccircle cx=%2260%22 cy=%2260%22 r=%223%22 fill=%22%23ff6b35%22 opacity=%220.1%22/%3E%3Ccircle cx=%2220%22 cy=%2230%22 r=%222%22 fill=%22%23221f1f%22 opacity=%220.15%22/%3E%3Ccircle cx=%22100%22 cy=%2280%22 r=%221.5%22 fill=%22%23ff4757%22 opacity=%220.1%22/%3E%3Cpath d=%22M30 90 Q60 70 90 90%22 stroke=%22%23221f1f%22 stroke-width=%221%22 opacity=%220.08%22/%3E%3C/g%3E%3C/svg%3E')";
@@ -9,11 +11,72 @@ const tattooPatternUrl =
 const inkSplatterUrl =
   "https://images.unsplash.com/photo-1574179208501-42ad8b7f4b97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80";
 
+const floatingVariants = {
+  animate: {
+    y: [0, -20, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+    },
+  },
+};
+
+const fadeInVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+const containerVariants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const inkDropVariants = (delay: number) => ({
+  animate: {
+    y: [0, 40, 0],
+    x: [0, Math.random() * 40 - 20, 0],
+    opacity: [0.4, 0.7, 0.4],
+    transition: {
+      duration: 3 + delay * 0.5,
+      repeat: Infinity,
+      delay: delay * 0.3,
+      ease: "easeInOut" as const,
+    },
+  },
+});
+
+const svgAnimateVariants = {
+  animate: {
+    rotate: 360,
+    transition: {
+      duration: 8,
+      repeat: Infinity,
+      ease: "linear" as const,
+    },
+  },
+};
+
 export function Hero() {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.5]);
+  const y = useTransform(scrollY, [0, 300], [0, 100]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden">
       {/* Dynamic Background - Dark/Light theme aware */}
-      <div
+      <motion.div
         className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black/50 to-slate-900/20 dark:from-black dark:via-slate-900 dark:to-black/80"
         style={{
           backgroundImage: `
@@ -23,22 +86,28 @@ export function Hero() {
           `,
           backgroundSize: "120px 120px, 400px 400px, 600px 600px",
           backgroundPosition: "0 0, 100px 200px, -100px 100px",
+          opacity: opacity,
+          y: y,
         }}
       />
 
       {/* === ANIMATED TATTOO ELEMENTS === */}
 
       {/* Animated Ink Droplets */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-5 w-3 h-3 bg-gradient-to-r from-primary/40 to-destructive/40 rounded-full animate-float opacity-40" />
-        <div className="absolute top-1/3 right-10 w-2 h-2 bg-gradient-to-r from-destructive/30 to-primary/30 rounded-full animate-float-delay1 opacity-30" />
-        <div className="absolute bottom-1/4 left-20 w-4 h-4 bg-gradient-to-r from-secondary/30 to-primary/40 rounded-full animate-float-delay2 opacity-50" />
-        <div className="absolute bottom-1/3 right-5 w-2.5 h-2.5 bg-gradient-to-r from-primary/35 to-destructive/35 rounded-full animate-float-delay3 opacity-40" />
-        <div className="absolute top-2/3 left-1/4 w-3.5 h-3.5 bg-gradient-to-r from-destructive/40 to-secondary/40 rounded-full animate-float-delay4 opacity-35" />
-      </div>
+      <motion.div className="absolute inset-0 pointer-events-none" variants={containerVariants} initial="initial" animate="animate">
+        <motion.div variants={inkDropVariants(0)} className="absolute top-1/4 left-5 w-3 h-3 bg-gradient-to-r from-primary/40 to-destructive/40 rounded-full opacity-40" />
+        <motion.div variants={inkDropVariants(1)} className="absolute top-1/3 right-10 w-2 h-2 bg-gradient-to-r from-destructive/30 to-primary/30 rounded-full opacity-30" />
+        <motion.div variants={inkDropVariants(2)} className="absolute bottom-1/4 left-20 w-4 h-4 bg-gradient-to-r from-secondary/30 to-primary/40 rounded-full opacity-50" />
+        <motion.div variants={inkDropVariants(3)} className="absolute bottom-1/3 right-5 w-2.5 h-2.5 bg-gradient-to-r from-primary/35 to-destructive/35 rounded-full opacity-40" />
+        <motion.div variants={inkDropVariants(4)} className="absolute top-2/3 left-1/4 w-3.5 h-3.5 bg-gradient-to-r from-destructive/40 to-secondary/40 rounded-full opacity-35" />
+      </motion.div>
 
       {/* Tattoo Machine/Pen - Main */}
-      <div className="absolute top-10 right-20 w-16 h-6 opacity-25 animate-tattoo-machine-drift">
+      <motion.div 
+        className="absolute top-10 right-20 w-16 h-6 opacity-25"
+        animate={{ y: [0, -5, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 120 32" className="w-full h-full">
           <defs>
             <linearGradient id="machineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -58,21 +127,26 @@ export function Hero() {
             strokeWidth="1.5"
           />
           <rect x="10" y="10" width="20" height="12" rx="3" fill="#444" />
-          <circle cx="85" cy="16" r="5" fill="#ff6b35" opacity="0.9">
-            <animate
-              attributeName="r"
-              values="5;6;5"
-              dur="1s"
-              repeatCount="indefinite"
-            />
-          </circle>
+          <motion.circle 
+            cx="85" 
+            cy="16" 
+            r="5" 
+            fill="#ff6b35" 
+            opacity="0.9"
+            animate={{ r: [5, 6, 5] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          />
           <rect x="95" y="12" width="20" height="8" rx="2" fill="#222" />
           <circle cx="105" cy="16" r="1.5" fill="#ff4757" />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Tattoo Ink Bottles */}
-      <div className="absolute bottom-32 left-4 w-12 h-20 opacity-30 animate-ink-bottle-bob">
+      <motion.div 
+        className="absolute bottom-32 left-4 w-12 h-20 opacity-30"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 40 70" className="w-full h-full">
           <defs>
             <linearGradient id="inkBottle1" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -103,9 +177,13 @@ export function Hero() {
             INK
           </text>
         </svg>
-      </div>
+      </motion.div>
 
-      <div className="absolute top-40 right-4 w-10 h-16 opacity-25 animate-ink-bottle-float-delay">
+      <motion.div 
+        className="absolute top-40 right-4 w-10 h-16 opacity-25"
+        animate={{ y: [-10, 0, -10] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      >
         <svg viewBox="0 0 35 65" className="w-full h-full">
           <defs>
             <linearGradient id="inkBottle2" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -124,10 +202,14 @@ export function Hero() {
           <rect x="11" y="6" width="13" height="9" rx="4" fill="#444" />
           <circle cx="18" cy="58" r="3.5" fill="#333" />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Needle Tip with Drip Effect */}
-      <div className="absolute top-1/4 left-4 w-10 h-10 opacity-20 animate-needle-drip">
+      <motion.div 
+        className="absolute top-1/4 left-4 w-10 h-10 opacity-20"
+        animate={{ rotate: [0, 5, -5, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 60 60" className="w-full h-full">
           <defs>
             <linearGradient id="needleTip" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -141,40 +223,33 @@ export function Hero() {
             stroke="#666"
             strokeWidth="1.5"
           />
-          <circle cx="30" cy="28" r="3" fill="#ff4757" opacity="0.8">
-            <animate
-              attributeName="cy"
-              values="28;32;28"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="r"
-              values="3;4;3"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </circle>
-          <path
+          <motion.circle 
+            cx="30" 
+            cy="28" 
+            r="3" 
+            fill="#ff4757" 
+            opacity="0.8"
+            animate={{ cy: [28, 32, 28], r: [3, 4, 3] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.path
             d="M30 32 Q32 38 28 42"
             stroke="#ff4757"
             strokeWidth="2"
             strokeLinecap="round"
             fill="none"
-            opacity="0.6"
-          >
-            <animate
-              attributeName="opacity"
-              values="0.6;0.9;0.6"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </path>
+            animate={{ opacity: [0.6, 0.9, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Existing Elements (Enhanced) */}
-      <div className="absolute top-20 left-4 w-16 h-16 md:w-20 md:h-20 opacity-20 animate-enhanced-pulse">
+      <motion.div 
+        className="absolute top-20 left-4 w-16 h-16 md:w-20 md:h-20 opacity-20"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <defs>
             <linearGradient id="inkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -182,34 +257,33 @@ export function Hero() {
               <stop offset="100%" stopColor="#ff4757" />
             </linearGradient>
           </defs>
-          <circle cx="50" cy="50" r="8" fill="url(#inkGrad)" opacity="0.6">
-            <animate
-              attributeName="r"
-              values="8;10;8"
-              dur="3s"
-              repeatCount="indefinite"
-            />
-          </circle>
-          <path
+          <motion.circle 
+            cx="50" 
+            cy="50" 
+            r="8" 
+            fill="url(#inkGrad)" 
+            opacity="0.6"
+            animate={{ r: [8, 10, 8] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.path
             d="M30 70 Q50 60 70 70 T90 70"
             stroke="#ff6b35"
             strokeWidth="2"
             fill="none"
             opacity="0.5"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              values="0 50 50;15 50 50;-10 50 50;0 50 50"
-              dur="4s"
-              repeatCount="indefinite"
-            />
-          </path>
+            animate={{ rotate: [0, 15, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Ink Splatter Particles */}
-      <div className="absolute bottom-40 left-10 w-16 h-16 opacity-15 animate-splatter-spin">
+      <motion.div 
+        className="absolute bottom-40 left-10 w-16 h-16 opacity-15"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+      >
         <svg viewBox="0 0 60 60" className="w-full h-full">
           <circle cx="20" cy="20" r="3" fill="#ff4757" opacity="0.8" />
           <circle cx="40" cy="15" r="2" fill="#ff6b35" opacity="0.6" />
@@ -222,10 +296,14 @@ export function Hero() {
             opacity="0.5"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Glowing Ink Lines */}
-      <div className="absolute top-20 right-10 w-20 h-20 opacity-10 animate-glow-rotate-enhanced">
+      <motion.div 
+        className="absolute top-20 right-10 w-20 h-20 opacity-10"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      >
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <defs>
             <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -242,10 +320,14 @@ export function Hero() {
             opacity="0.7"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Animated Ink Swirl Cloud - Top Right Corner */}
-      <div className="absolute top-4 right-4 w-16 h-16 opacity-15 animate-ink-swirl">
+      <motion.div 
+        className="absolute top-4 right-4 w-16 h-16 opacity-15"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+      >
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <defs>
             <radialGradient id="swirGrad" cx="50%" cy="50%" r="50%">
@@ -267,10 +349,14 @@ export function Hero() {
             opacity="0.4"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Rotating Tribal Pattern */}
-      <div className="absolute bottom-10 right-10 w-20 h-20 opacity-20 animate-tribal-spin">
+      <motion.div 
+        className="absolute bottom-10 right-10 w-20 h-20 opacity-20"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+      >
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <defs>
             <linearGradient id="tribalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -293,10 +379,14 @@ export function Hero() {
             opacity="0.4"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Animated Lightning Bolts (Tribal Tattoo Style) */}
-      <div className="absolute top-1/4 left-4 w-12 h-20 opacity-25 animate-lightning-strike">
+      <motion.div 
+        className="absolute top-1/4 left-4 w-12 h-20 opacity-25"
+        animate={{ opacity: [0.25, 0.5, 0.25] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 40 100" className="w-full h-full">
           <defs>
             <linearGradient
@@ -327,10 +417,14 @@ export function Hero() {
             opacity="0.5"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Flowing Ink Stream */}
-      <div className="absolute left-2 top-1/3 w-20 h-32 opacity-15 animate-ink-flow">
+      <motion.div 
+        className="absolute left-2 top-1/3 w-20 h-32 opacity-15"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 60 120" className="w-full h-full">
           <defs>
             <linearGradient id="flowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -347,19 +441,24 @@ export function Hero() {
             strokeLinecap="round"
             opacity="0.8"
           />
-          <circle cx="30" cy="20" r="2" fill="#ff6b35" opacity="0.6">
-            <animate
-              attributeName="opacity"
-              values="0.6;1;0.6"
-              dur="3s"
-              repeatCount="indefinite"
-            />
-          </circle>
+          <motion.circle 
+            cx="30" 
+            cy="20" 
+            r="2" 
+            fill="#ff6b35" 
+            opacity="0.6"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Rotating Mandala/Compass Pattern */}
-      <div className="absolute bottom-20 right-4 w-24 h-24 opacity-12 animate-mandala-rotate">
+      <motion.div 
+        className="absolute bottom-20 right-4 w-24 h-24 opacity-12"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      >
         <svg viewBox="0 0 120 120" className="w-full h-full">
           <defs>
             <linearGradient
@@ -444,10 +543,14 @@ export function Hero() {
             opacity="0.5"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Animated Ink Chain */}
-      <div className="absolute top-5 left-20 w-24 h-10 opacity-18 animate-chain-swing">
+      <motion.div 
+        className="absolute top-5 left-20 w-24 h-10 opacity-18"
+        animate={{ rotate: [0, 5, -5, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
         <svg viewBox="0 0 200 60" className="w-full h-full">
           <defs>
             <linearGradient id="chainGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -556,7 +659,7 @@ export function Hero() {
             opacity="0.5"
           />
         </svg>
-      </div>
+      </motion.div>
 
       {/* Hero Image Overlay */}
       <div className="absolute inset-0">
@@ -572,20 +675,35 @@ export function Hero() {
       </div>
 
       {/* Content stays exactly the same */}
-      <div className="container mx-auto px-4 text-center relative z-20 pt-20 md:pt-0 pb-20 md:pb-0">
+      <motion.div 
+        className="container mx-auto px-4 text-center relative z-20 pt-20 md:pt-0 pb-20 md:pb-0"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ y: useTransform(scrollY, [0, 400], [0, 50]) }}
+      >
         <div className="max-w-5xl mx-auto">
-          <div className="relative mb-8">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-slate-900 via-slate-700 to-slate-800 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent drop-shadow-2xl uppercase">
+          <motion.div 
+            className="relative mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-slate-900 via-slate-700 to-slate-800 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent drop-shadow-2xl uppercase"
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
               INK Flow Tattoo
-            </h1>
+            </motion.h1>
             <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-destructive opacity-75" />
-          </div>
+          </motion.div>
 
-          <p className="text-xl md:text-2xl lg:text-3xl font-medium text-slate-700 dark:text-slate-200 mb-6 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+          <p className="text-lg md:text-xl lg:text-2xl font-medium text-slate-700 dark:text-slate-200 mb-6 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
             Precision Crafted Tattoos • Custom Artwork • Timeless Stories
           </p>
 
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed opacity-90">
+          <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed opacity-90">
             Award-winning studio where visionary artists craft bold, custom tattoos that flow with your story.
           </p>
 
@@ -604,16 +722,16 @@ export function Hero() {
           <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
             <Button
               size="lg"
-              className="group text-lg px-12 py-8 shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary to-destructive/90 text-white font-semibold border-2 border-transparent hover:border-white/50 backdrop-blur-sm"
+              className="group text-base px-10 py-6 shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary to-destructive/90 text-white font-semibold border-2 border-transparent hover:border-white/50 backdrop-blur-sm"
             >
-              <Calendar className="mr-3 h-6 w-6 group-hover:-translate-x-1 transition-transform" />
+              <Calendar className="mr-3 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Book Your Session
-              <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-12 py-8 border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="text-base px-10 py-6 border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
               asChild
             >
               <Link href="/gallery">
@@ -627,10 +745,10 @@ export function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="text-4xl md:text-5xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
+              <div className="text-3xl md:text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
                 5+
               </div>
-              <div className="text-xl font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-200 tracking-wide">
                 Years Crafting
               </div>
               <div className="text-slate-400 text-sm mt-1">Masterpieces</div>
@@ -638,10 +756,10 @@ export function Hero() {
 
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-destructive/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="text-4xl md:text-5xl font-black text-destructive mb-3 group-hover:scale-110 transition-transform">
+              <div className="text-3xl md:text-4xl font-black text-destructive mb-3 group-hover:scale-110 transition-transform">
                 1K+
               </div>
-              <div className="text-xl font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-200 tracking-wide">
                 Satisfied Clients
               </div>
               <div className="text-slate-400 text-sm mt-1">Worldwide</div>
@@ -649,195 +767,106 @@ export function Hero() {
 
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="text-4xl md:text-5xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
+              <div className="text-3xl md:text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
                 100%
               </div>
-              <div className="text-xl font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-200 tracking-wide">
                 Sterile & Safe Studio
               </div>
               <div className="text-slate-400 text-sm mt-1">Worldwide</div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-60 animate-bounce">
+      <motion.div 
+        className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-60"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gradient-to-b from-white/50 to-transparent mt-2 rounded-full animate-pulse" />
+          <motion.div 
+            className="w-1 h-3 bg-gradient-to-b from-white/50 to-transparent mt-2 rounded-full"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
         </div>
-      </div>
+      </motion.div>
 
       {/* === RANDOM FLOATING BALLS === */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-        {/* Ball 1 */}
-        <div className="floating-ball ball-1" />
-        {/* Ball 2 */}
-        <div className="floating-ball ball-2" />
-        {/* Ball 3 */}
-        <div className="floating-ball ball-3" />
-        {/* Ball 4 */}
-        <div className="floating-ball ball-4" />
+        <motion.div 
+          className="absolute top-1/5 left-[15%] w-7 h-7 rounded-full opacity-35"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 107, 53, 0.9))",
+            filter: "blur(1px)",
+          }}
+          animate={{
+            x: [0, 120, -90, 160, -140, 200, -180],
+            y: [0, -80, 140, 220, 80, -120, 160],
+          }}
+          transition={{
+            duration: 26,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1],
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/5 w-9 h-9 rounded-full opacity-35"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 71, 87, 0.9))",
+            filter: "blur(1px)",
+          }}
+          animate={{
+            x: [0, -140, 100, -200, 180, -120, 220],
+            y: [0, -100, 160, 240, -160, 60, -200],
+          }}
+          transition={{
+            duration: 32,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.2, 0.35, 0.55, 0.7, 0.85, 1],
+          }}
+        />
+        <motion.div 
+          className="absolute top-3/5 left-[70%] w-8 h-8 rounded-full opacity-35"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(116, 185, 255, 0.9))",
+            filter: "blur(1px)",
+          }}
+          animate={{
+            x: [220, -180, 140, -200, 180, -140, 0],
+            y: [-140, 60, 200, -80, -160, 120, 0],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 1],
+          }}
+        />
+        <motion.div 
+          className="absolute top-[35%] right-[60%] w-10 h-10 rounded-full opacity-35"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(162, 155, 254, 0.9))",
+            filter: "blur(1px)",
+          }}
+          animate={{
+            x: [-240, 100, -180, 220, -120, 160, 0],
+            y: [-160, 180, -120, 100, -200, 140, 0],
+          }}
+          transition={{
+            duration: 34,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.2, 0.35, 0.55, 0.7, 0.85, 1],
+          }}
+        />
       </div>
 
-      <style jsx global>{`
-        .floating-ball {
-          position: absolute;
-          width: 28px;
-          height: 28px;
-          border-radius: 9999px;
-          background: radial-gradient(
-            circle at 30% 30%,
-            rgba(255, 255, 255, 0.9),
-            rgba(255, 107, 53, 0.9)
-          );
-          opacity: 0.35;
-          filter: blur(1px);
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
 
-        .ball-1 {
-          top: 20%;
-          left: 15%;
-          animation: random-float-1 26s infinite alternate;
-        }
-
-        .ball-2 {
-          bottom: 25%;
-          right: 20%;
-          width: 36px;
-          height: 36px;
-          background: radial-gradient(
-            circle at 30% 30%,
-            rgba(255, 255, 255, 0.9),
-            rgba(255, 71, 87, 0.9)
-          );
-          animation: random-float-2 32s infinite alternate;
-        }
-
-        .ball-3 {
-          top: 60%;
-          left: 70%;
-          width: 30px;
-          height: 30px;
-          background: radial-gradient(
-            circle at 30% 30%,
-            rgba(255, 255, 255, 0.9),
-            rgba(116, 185, 255, 0.9)
-          );
-          animation: random-float-3 28s infinite alternate-reverse;
-        }
-
-        .ball-4 {
-          top: 35%;
-          right: 60%;
-          width: 40px;
-          height: 40px;
-          background: radial-gradient(
-            circle at 30% 30%,
-            rgba(255, 255, 255, 0.9),
-            rgba(162, 155, 254, 0.9)
-          );
-          animation: random-float-4 34s infinite alternate-reverse;
-        }
-
-        @keyframes random-float-1 {
-          0% {
-            transform: translate(0, 0);
-          }
-          15% {
-            transform: translate(120px, -80px);
-          }
-          30% {
-            transform: translate(-90px, 140px);
-          }
-          45% {
-            transform: translate(160px, 220px);
-          }
-          60% {
-            transform: translate(-140px, 80px);
-          }
-          75% {
-            transform: translate(200px, -120px);
-          }
-          100% {
-            transform: translate(-180px, 160px);
-          }
-        }
-
-        @keyframes random-float-2 {
-          0% {
-            transform: translate(0, 0);
-          }
-          20% {
-            transform: translate(-140px, -100px);
-          }
-          35% {
-            transform: translate(100px, 160px);
-          }
-          55% {
-            transform: translate(-200px, 240px);
-          }
-          70% {
-            transform: translate(180px, -160px);
-          }
-          85% {
-            transform: translate(-120px, 60px);
-          }
-          100% {
-            transform: translate(220px, -200px);
-          }
-        }
-
-        @keyframes random-float-3 {
-          0% {
-            transform: translate(0, 0);
-          }
-          15% {
-            transform: translate(-140px, 120px);
-          }
-          30% {
-            transform: translate(180px, -160px);
-          }
-          45% {
-            transform: translate(-200px, -80px);
-          }
-          60% {
-            transform: translate(140px, 200px);
-          }
-          75% {
-            transform: translate(-180px, 60px);
-          }
-          100% {
-            transform: translate(220px, -140px);
-          }
-        }
-
-        @keyframes random-float-4 {
-          0% {
-            transform: translate(0, 0);
-          }
-          20% {
-            transform: translate(160px, 140px);
-          }
-          35% {
-            transform: translate(-120px, -200px);
-          }
-          55% {
-            transform: translate(220px, 100px);
-          }
-          70% {
-            transform: translate(-180px, -120px);
-          }
-          85% {
-            transform: translate(100px, 180px);
-          }
-          100% {
-            transform: translate(-240px, -160px);
-          }
-        }
-      `}</style>
     </section>
   );
 }
