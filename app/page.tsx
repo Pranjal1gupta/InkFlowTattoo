@@ -10,8 +10,8 @@ export default function Home() {
       <Hero />
       <FeaturedStyles />
       <Services />
-      <TestimonialsPreview />
       <GalleryPreview />
+      <TestimonialsPreview />
     </>
   );
 }

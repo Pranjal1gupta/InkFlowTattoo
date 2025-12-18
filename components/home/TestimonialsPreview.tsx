@@ -1,70 +1,3 @@
-// import { Card, CardContent } from '@/components/ui/card';
-// import { Button } from '@/components/ui/button';
-// import { Star } from 'lucide-react';
-// import Link from 'next/link';
-
-// const testimonials = [
-//   {
-//     name: 'Sarah Johnson',
-//     rating: 5,
-//     text: 'Amazing experience! The artist was incredibly talented and made me feel comfortable throughout the entire process.',
-//     image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100',
-//   },
-//   {
-//     name: 'Mike Chen',
-//     rating: 5,
-//     text: 'Best tattoo studio in the city. Professional, clean, and the artwork is absolutely stunning.',
-//     image: 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=100',
-//   },
-//   {
-//     name: 'Emma Davis',
-//     rating: 5,
-//     text: 'They brought my vision to life perfectly. The attention to detail and artistry is unmatched.',
-//     image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100',
-//   },
-// ];
-
-// export function TestimonialsPreview() {
-//   return (
-//     <section className="py-20 bg-muted/30">
-//       <div className="container mx-auto px-4">
-//         <div className="text-center mb-16">
-//           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-//           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-//             Read testimonials from our satisfied clients who trusted us with their tattoo journey
-//           </p>
-//         </div>
-
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-//           {testimonials.map((testimonial, index) => (
-//             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-//               <CardContent className="p-6">
-//                 <img
-//                   src={testimonial.image}
-//                   alt={testimonial.name}
-//                   className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
-//                 />
-//                 <div className="flex justify-center mb-4">
-//                   {[...Array(testimonial.rating)].map((_, i) => (
-//                     <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-//                   ))}
-//                 </div>
-//                 <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
-//                 <p className="font-semibold">{testimonial.name}</p>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </div>
-
-//         <div className="text-center">
-//           <Button size="lg" variant="outline" asChild>
-//             <Link href="/testimonials">Read More Reviews</Link>
-//           </Button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -73,34 +6,36 @@ import Link from "next/link";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Ananya Sharma",
     rating: 5,
-    text: "The artist captured my vision perfectly. Clean lines, incredible shading, and made me feel completely at ease.",
+    text: "The artist understood exactly what I wanted and guided me patiently through the design. The detailing and finish are absolutely beautiful. Felt very comfortable throughout the session.",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
   },
   {
-    name: "Mike Chen",
+    name: "Rohit Verma",
     rating: 5,
-    text: "Best studio experience ever. Sterile, professional, and the realism tattoo blew me away. 10/10.",
+    text: "Very professional studio with high hygiene standards. The realism tattoo turned out even better than I imagined. Totally worth the time and money.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
   },
   {
-    name: "Emma Davis",
+    name: "Priya Nair",
     rating: 5,
-    text: "Transformed my old tattoo into a masterpiece. Attention to detail and aftercare guidance was exceptional.",
+    text: "They redesigned my old tattoo so beautifully that it feels brand new. The artist explained the aftercare properly and followed up as well. Highly recommended.",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
   },
   {
-    name: "James Rodriguez",
+    name: "Arjun Mehta",
     rating: 5,
-    text: "Japanese sleeve came out perfect. Artist was a genius with color blending and composition.",
+    text: "Got my Japanese sleeve done here and the experience was amazing. The colour work, composition, and patience of the artist were top class. Truly impressed.",
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
   },
 ];
+
+
 
 export function TestimonialsPreview() {
   return (

@@ -73,12 +73,6 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 1"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
-              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-400">
-                <p className="text-white font-bold text-sm drop-shadow-lg">
-                  Realism
-                </p>
-              </div>
             </div>
 
             <div className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(3)}>
@@ -106,12 +100,6 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 2"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
-              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-400">
-                <p className="text-white font-bold text-sm drop-shadow-lg">
-                  Neo-Trad
-                </p>
-              </div>
             </div>
 
             <div className="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(4)}>
@@ -139,12 +127,6 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 3"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
-              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-400">
-                <p className="text-white font-bold text-sm drop-shadow-lg">
-                  Japanese
-                </p>
-              </div>
             </div>
 
             <div className="group relative aspect-[2/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(6)}>
