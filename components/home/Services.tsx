@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Palette, Heart, Crown, Zap, Droplet, Syringe, Shield, CalendarClock } from 'lucide-react';
+import { Palette, Heart, Crown, Sparkles, Droplet, Syringe, Shield, Zap } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const services = [
@@ -25,6 +25,16 @@ const services = [
     description: 'Studio-grade hygiene with strict sterilization and safety protocols.',
   },
   {
+    icon: Sparkles,
+    title: 'Nails Art',
+    description: 'Creative and stunning nail art designs to complement your personal style.',
+  },
+  {
+    icon: Zap,
+    title: 'Piercing',
+    description: 'Professional piercing services with sterile equipment and expert placement.',
+  },
+  {
     icon: Heart,
     title: 'Cover-ups & Touch-ups',
     description: 'Revive faded work or transform old tattoos with expert cover-ups.',
@@ -34,16 +44,7 @@ const services = [
     title: 'VIP Aftercare',
     description: 'Clear aftercare guidance and curated products for perfect healing.',
   },
-  {
-    icon: Zap,
-    title: 'Walk-ins Welcome',
-    description: 'Flash tattoos and quick consultations available most days.',
-  },
-  {
-    icon: CalendarClock,
-    title: 'Flexible Scheduling',
-    description: 'Book short sessions or full-day pieces to match your pace.',
-  },
+
 ];
 
 export function Services() {

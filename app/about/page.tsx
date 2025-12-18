@@ -18,8 +18,8 @@ export default function About() {
         <StudioStory />
         <HygieneSafety />
         <WhyChooseUs />
-        <TeamValues />
-        <StudioImages />
+        {/* <TeamValues />
+        <StudioImages /> */}
       </div>
     </div>
   );
