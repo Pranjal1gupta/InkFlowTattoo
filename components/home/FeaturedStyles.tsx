@@ -50,15 +50,14 @@ const styles = [
   },
 ];
 
-const loopStyles = Array(50)
+const BUFFER_SIZE = 3;
+const loopStyles = Array(BUFFER_SIZE * 2 + 1)
   .fill(null)
   .flatMap(() => styles);
-const TOTAL_SLIDES = loopStyles.length;
 
 export function FeaturedStyles() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
-  const prevIndexRef = useRef(0);
+  const [index, setIndex] = useState(BUFFER_SIZE * styles.length);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -74,7 +73,7 @@ export function FeaturedStyles() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % TOTAL_SLIDES);
+      setIndex((prevIndex) => prevIndex + 1);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -84,30 +83,35 @@ export function FeaturedStyles() {
     if (!trackRef.current) return;
 
     const cardWidth = isMobile ? 192 + 16 : 320 + 48;
-    const effectiveIndex = isMobile ? (index % styles.length) : index;
     const mobileOffset = isMobile ? (window.innerWidth - 192) / 2 : 0;
-    const wasReset = !isMobile && index < prevIndexRef.current;
 
-    if (wasReset) {
-      trackRef.current.style.transition = "none";
-      trackRef.current.style.transform = `translateX(-${
-        effectiveIndex * cardWidth - mobileOffset
-      }px)`;
+    trackRef.current.style.transition = "transform 900ms ease";
+    trackRef.current.style.transform = `translateX(-${
+      index * cardWidth - mobileOffset
+    }px)`;
 
-      trackRef.current.offsetHeight;
-
-      requestAnimationFrame(() => {
+    // Reset position when reaching the end of buffer
+    if (index >= (BUFFER_SIZE * 2) * styles.length) {
+      setTimeout(() => {
         if (!trackRef.current) return;
-        trackRef.current.style.transition = "transform 900ms ease";
-      });
-    } else {
-      trackRef.current.style.transition = "transform 900ms ease";
-      trackRef.current.style.transform = `translateX(-${
-        effectiveIndex * cardWidth - mobileOffset
-      }px)`;
+        trackRef.current.style.transition = "none";
+        setIndex(BUFFER_SIZE * styles.length);
+        trackRef.current.style.transform = `translateX(-${
+          BUFFER_SIZE * styles.length * cardWidth - mobileOffset
+        }px)`;
+      }, 900);
     }
-
-    prevIndexRef.current = index;
+    // Reset position when reaching the beginning of buffer
+    else if (index <= 0) {
+      setTimeout(() => {
+        if (!trackRef.current) return;
+        trackRef.current.style.transition = "none";
+        setIndex(BUFFER_SIZE * styles.length);
+        trackRef.current.style.transform = `translateX(-${
+          BUFFER_SIZE * styles.length * cardWidth - mobileOffset
+        }px)`;
+      }, 900);
+    }
   }, [index, isMobile]);
 
   return (
@@ -134,7 +138,8 @@ export function FeaturedStyles() {
             className="flex gap-4 md:gap-12 transition-transform duration-900 ease-out"
           >
             {loopStyles.map((style, i) => {
-              const isCenter = isMobile ? i === index : i === index + 1;
+              const centerIndex = isMobile ? index : index + 1;
+              const isCenter = i === centerIndex;
 
               return (
                 <div
@@ -181,7 +186,7 @@ export function FeaturedStyles() {
           variant="outline"
           size="icon"
           className="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-16 z-50"
-          onClick={() => setIndex((i) => (i - 1 + TOTAL_SLIDES) % TOTAL_SLIDES)}
+          onClick={() => setIndex((i) => i - 1)}
         >
           <ChevronLeft />
         </Button>
@@ -189,7 +194,7 @@ export function FeaturedStyles() {
           variant="outline"
           size="icon"
           className="absolute right-2 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-16 z-50"
-          onClick={() => setIndex((i) => (i + 1) % TOTAL_SLIDES)}
+          onClick={() => setIndex((i) => i + 1)}
         >
           <ChevronRight />
         </Button>
