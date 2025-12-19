@@ -107,7 +107,7 @@ export function StudioStory() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/30 ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all duration-700 hover:shadow-3xl hover:shadow-primary/40">
               {/* Image */}
               <img
-                src="https://images.unsplash.com/photo-1558618047-3c8c76ca3350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=85"
+                src="https://res.cloudinary.com/dlifnml9x/image/upload/v1766156861/IMG-20251214-WA0000_gnih3z.jpg"
                 alt="Ink & Soul Studio interior"
                 className="w-full h-[600px] lg:h-[700px] object-cover group-hover:scale-105 transition-transform duration-1000"
               />
