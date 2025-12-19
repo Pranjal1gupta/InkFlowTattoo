@@ -146,14 +146,12 @@ export function Hero() {
             strokeWidth="1.5"
           />
           <rect x="10" y="10" width="20" height="12" rx="3" fill="#444" />
-          <motion.circle 
+          <circle 
             cx="85" 
             cy="16" 
             r="5" 
             fill="#ff6b35" 
             opacity="0.9"
-            animate={{ r: [5, 6, 5] }}
-            transition={{ duration: 1, repeat: Infinity }}
           />
           <rect x="95" y="12" width="20" height="8" rx="2" fill="#222" />
           <circle cx="105" cy="16" r="1.5" fill="#ff4757" />
@@ -242,14 +240,12 @@ export function Hero() {
             stroke="#666"
             strokeWidth="1.5"
           />
-          <motion.circle 
+          <circle 
             cx="30" 
             cy="28" 
             r="3" 
             fill="#ff4757" 
             opacity="0.8"
-            animate={{ cy: [28, 32, 28], scale: [1, 1.33, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.path
             d="M30 32 Q32 38 28 42"
@@ -276,14 +272,12 @@ export function Hero() {
               <stop offset="100%" stopColor="#ff4757" />
             </linearGradient>
           </defs>
-          <motion.circle 
+          <circle 
             cx="50" 
             cy="50" 
             r="8" 
             fill="url(#inkGrad)" 
             opacity="0.6"
-            animate={{ r: [8, 10, 8] }}
-            transition={{ duration: 3, repeat: Infinity }}
           />
           <motion.path
             d="M30 70 Q50 60 70 70 T90 70"
@@ -460,14 +454,12 @@ export function Hero() {
             strokeLinecap="round"
             opacity="0.8"
           />
-          <motion.circle 
+          <circle 
             cx="30" 
             cy="20" 
             r="2" 
             fill="#ff6b35" 
             opacity="0.6"
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 3, repeat: Infinity }}
           />
         </svg>
       </motion.div>
@@ -765,7 +757,7 @@ export function Hero() {
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
               <div className="text-3xl md:text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
-                5+
+                2+
               </div>
               <div className="text-lg font-semibold text-slate-200 tracking-wide">
                 Years Crafting

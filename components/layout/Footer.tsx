@@ -12,7 +12,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-muted/40 via-background to-muted/60 dark:from-slate-900 dark:via-black dark:to-black border-t border-border">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-muted/40 via-background/60 to-muted/20 border-t border-border">
       {/* Ambient ink glow */}
       <div
         className="absolute inset-0 opacity-30 dark:opacity-20"

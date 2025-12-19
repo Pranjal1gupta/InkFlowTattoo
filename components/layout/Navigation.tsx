@@ -30,22 +30,24 @@ export function Navigation() {
     setMounted(true);
   }, []);
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            {mounted && (
-              <Image
-                src={theme === 'light' ? '/light_logo.png' : '/logo.png'}
-                alt="Tatoo Tribe"
-                width={120}
-                height={48}
-                className="h-10 w-auto"
-                priority
-              />
-            )}
+            <Image
+              src={theme === 'light' ? '/light_logo.png' : '/logo.png'}
+              alt="Tatoo Tribe"
+              width={120}
+              height={48}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
