@@ -43,9 +43,9 @@ export function Navigation() {
             <Image
               src={theme === 'light' ? '/light_logo.png' : '/logo.png'}
               alt="Tatoo Tribe"
-              width={120}
-              height={48}
-              className="h-10 w-auto"
+              width={180}
+              height={72}
+              className="h-20 w-auto"
               priority
             />
           </Link>

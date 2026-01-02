@@ -74,7 +74,7 @@ export function Hero() {
   const y = useTransform(scrollY, [0, 300], [0, 100]);
 
   return (
-    <section className="relative min-h-[110vh] flex items-center justify-center overflow-hidden">
+    <section className="relative lg:py-16 py-10 px-4 sm:py-20 lg:pt-32 space-y-8 flex items-center justify-center overflow-hidden">
       {/* Dynamic Background - Dark/Light theme aware */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black/50 to-slate-900/20 dark:from-black dark:via-slate-900 dark:to-black/80"
@@ -791,7 +791,7 @@ export function Hero() {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      {/* <motion.div 
         className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-60"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -803,7 +803,7 @@ export function Hero() {
             transition={{ duration: 1.5, repeat: Infinity }}
           />
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* === RANDOM FLOATING BALLS === */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
