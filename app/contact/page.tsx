@@ -161,7 +161,7 @@ export default function Contact() {
           </motion.div>
           <motion.div variants={fadeInVariants}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-              Ready to start your tattoo journey? Get in touch with us today
+              Ready to start your tattoo journey? We are available 24/7 to assist you.
             </p>
           </motion.div>
         </motion.div>

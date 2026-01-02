@@ -87,7 +87,7 @@ export function ContactForm() {
                   id="name"
                   value={formData.name}
                   onChange={(e) => handleChange('name', e.target.value)}
-                  className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60"
+                  className="border-primary/30 bg-white dark:bg-slate-900/40 backdrop-blur focus:border-primary/60"
                   required
                 />
               </div>
@@ -98,7 +98,7 @@ export function ContactForm() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleChange('email', e.target.value)}
-                  className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60"
+                  className="border-primary/30 bg-white dark:bg-slate-900/40 backdrop-blur focus:border-primary/60"
                   required
                 />
               </div>
@@ -111,7 +111,7 @@ export function ContactForm() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
-                className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60"
+                className="border-primary/30 bg-white dark:bg-slate-900/40 backdrop-blur focus:border-primary/60"
               />
             </motion.div>
 
@@ -119,7 +119,8 @@ export function ContactForm() {
               <div>
                 <Label htmlFor="service" className="font-semibold text-primary">Service Type</Label>
                 <Select onValueChange={(value) => handleChange('service', value)}>
-                  <SelectTrigger className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60">
+                  <SelectTrigger className="border-primary/30 bg-white dark:bg-slate-900/40
+                   backdrop-blur focus:border-primary/60">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-900 border-primary/30">
@@ -136,7 +137,7 @@ export function ContactForm() {
               <div>
                 <Label htmlFor="artist" className="font-semibold text-primary">Preferred Artist</Label>
                 <Select onValueChange={(value) => handleChange('artist', value)}>
-                  <SelectTrigger className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60">
+                  <SelectTrigger className="border-primary/30 bg-white dark:bg-slate-900/40 backdrop-blur focus:border-primary/60">
                     <SelectValue placeholder="Select an artist" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-900 border-primary/30">
@@ -157,7 +158,7 @@ export function ContactForm() {
                 value={formData.message}
                 onChange={(e) => handleChange('message', e.target.value)}
                 rows={5}
-                className="border-primary/30 bg-slate-900/40 backdrop-blur focus:border-primary/60"
+                className="border-primary/30 bg-white dark:bg-slate-900/40 backdrop-blur focus:border-primary/60"
                 required
               />
             </motion.div>

@@ -47,8 +47,8 @@ export function ContactInfo() {
               <div>
                 <p className="font-semibold text-primary">Address</p>
                 <p className="text-muted-foreground">
-                  123 Tattoo Street<br />
-                  Art District, NY 10001
+                  Shop no-130, Ground floor, Amrit Plaza,<br/>
+                   Jagat Farm, Greater Noida, Uttar Pradesh 201310
                 </p>
               </div>
             </div>
@@ -57,7 +57,7 @@ export function ContactInfo() {
               <Phone className="h-5 w-5 text-primary flex-shrink-0" />
               <div>
                 <p className="font-semibold text-primary">Phone</p>
-                <p className="text-muted-foreground">(555) 123-4567</p>
+                <p className="text-muted-foreground">+91-7703827950</p>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ export function ContactInfo() {
               <Mail className="h-5 w-5 text-primary flex-shrink-0" />
               <div>
                 <p className="font-semibold text-primary">Email</p>
-                <p className="text-muted-foreground">info@inkandsoul.com</p>
+                <p className="text-muted-foreground">inkflowtattoo2023@gmail.com</p>
               </div>
             </div>
 
@@ -74,9 +74,7 @@ export function ContactInfo() {
               <div>
                 <p className="font-semibold text-primary">Studio Hours</p>
                 <div className="text-muted-foreground text-sm">
-                  <p>Monday - Friday: 12pm - 8pm</p>
-                  <p>Saturday - Sunday: 11am - 7pm</p>
-                  <p className="text-xs mt-1">*By appointment only</p>
+                  <p>Open 24/7</p>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  // { name: 'Artists', href: '/artists' },
+  { name: 'Artists', href: '/artists' },
   { name: 'Services', href: '/services' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Testimonials', href: '/testimonials' },

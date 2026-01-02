@@ -68,13 +68,6 @@ export function StudioStory() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
           <div className="lg:order-2 space-y-8">
-            <div className="group relative p-8 bg-gradient-to-br from-card/80 via-background/50 to-card/60 backdrop-blur-xl rounded-3xl border border-border/50 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 shadow-xl">
-              {/* Quote accent */}
-              <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-to-br from-primary/30 to-destructive/30 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg border border-primary/40">
-                <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.663 17.069A2 2 0 017 15V9.5a2 2 0 012-2h2.28l.727-2.174A3.374 3.374 0 0114.44 4H18a2 2 0 012 2v9a2 2 0 01-2 2H9.663zM8 15a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1h4a1 1 0 011 1v6z"/>
-                </svg>
-              </div>
               
               <div className="space-y-6 pt-12">
                 <div className="space-y-4">
@@ -99,7 +92,6 @@ export function StudioStory() {
                   </p>
                 </div>
               </div>
-            </div>
           </div>
 
           {/* Image */}
