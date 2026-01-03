@@ -166,7 +166,7 @@ export default function About() {
           </motion.div>
           <motion.div variants={fadeInVariants}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 bg-gradient-to-r from-foreground via-primary to-destructive bg-clip-text text-transparent drop-shadow-2xl tracking-tight uppercase">
-              About INK Flow Tattoo
+              About INK FLOW TATTOO
             </h1>
           </motion.div>
           <motion.div variants={fadeInVariants}>

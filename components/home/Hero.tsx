@@ -685,6 +685,9 @@ export function Hero() {
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
       </div>
 
+      {/* Fade Effect at Bottom */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none z-10" />
+
       {/* Content stays exactly the same */}
       <motion.div 
         className="container mx-auto px-4 text-center relative z-20 pt-20 md:pt-0 pb-20 md:pb-0"
@@ -705,7 +708,7 @@ export function Hero() {
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              INK Flow Tattoo
+              INK FLOW TATTOO
             </motion.h1>
             <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-primary to-destructive opacity-75" />
           </motion.div>
@@ -742,7 +745,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="text-base px-10 py-6 border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="text-base px-10 py-6 border-2 border-slate-200/50 dark:border-white/30 bg-white/10 dark:bg-white/10 backdrop-blur-sm hover:bg-slate-900 hover:text-white dark:hover:bg-white/20 dark:hover:text-white hover:border-slate-900 dark:hover:border-white/50 text-slate-900 dark:text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
               asChild
             >
               <Link href="/gallery">
@@ -755,14 +758,14 @@ export function Hero() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="text-3xl md:text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
+              <div className="absolute inset-0 bg-gradient-to-t from-destructive/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="text-3xl md:text-4xl font-black text-destructive mb-3 group-hover:scale-110 transition-transform">
                 2+
               </div>
-              <div className="text-lg font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-800 dark:text-slate-200 tracking-wide">
                 Years Crafting
               </div>
-              <div className="text-slate-400 text-sm mt-1">Masterpieces</div>
+              <div className="text-slate-600 dark:text-slate-400 text-sm mt-1">Masterpieces</div>
             </div>
 
             <div className="group relative">
@@ -770,21 +773,21 @@ export function Hero() {
               <div className="text-3xl md:text-4xl font-black text-destructive mb-3 group-hover:scale-110 transition-transform">
                 1K+
               </div>
-              <div className="text-lg font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-800 dark:text-slate-200 tracking-wide">
                 Satisfied Clients
               </div>
-              <div className="text-slate-400 text-sm mt-1">Worldwide</div>
+              <div className="text-slate-600 dark:text-slate-400 text-sm mt-1">Worldwide</div>
             </div>
 
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="text-3xl md:text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">
+              <div className="absolute inset-0 bg-gradient-to-t from-destructive/20 to-transparent rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="text-3xl md:text-4xl font-black text-destructive mb-3 group-hover:scale-110 transition-transform">
                 100%
               </div>
-              <div className="text-lg font-semibold text-slate-200 tracking-wide">
+              <div className="text-lg font-semibold text-slate-800 dark:text-slate-200 tracking-wide">
                 Sterile & Safe Studio
               </div>
-              <div className="text-slate-400 text-sm mt-1">Worldwide</div>
+              <div className="text-slate-600 dark:text-slate-400 text-sm mt-1">Worldwide</div>
             </div>
           </div>
         </div>

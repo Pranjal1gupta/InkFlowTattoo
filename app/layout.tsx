@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { MouseFollower } from '@/components/ui/mouse-follower';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     'tattoo aftercare',
     'walk-in tattoos',
     'tattoo booking',
-    'ink flow tattoo',
+    'INK FLOW TATTOO',
     'greater noida tattoo',
     'jagat farm tattoo studio',
     'noida tattoo artist',
@@ -223,6 +224,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <MouseFollower />
           <Navigation />
           <main className="min-h-screen">
             {children}

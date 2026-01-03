@@ -5,10 +5,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { AppointmentModal } from '@/components/appointment/AppointmentModal';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from '@/components/ui/sheet';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,6 +29,7 @@ const navigation = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { theme } = useTheme();
@@ -67,50 +75,60 @@ export function Navigation() {
               </Link>
             ))}
             <ThemeToggle />
-            <Button>Book Appointment</Button>
+            <Button onClick={() => setIsAppointmentModalOpen(true)}>Book Appointment</Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <div className="flex items-center space-x-2">
               <ThemeToggle />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                  >
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px]">
+                  <SheetTitle className="sr-only">Menu</SheetTitle>
+                  <div className="flex flex-col space-y-4 mt-8">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className={cn(
+                          'text-lg font-medium transition-colors hover:text-primary',
+                          pathname === item.href
+                            ? 'text-primary'
+                            : 'text-muted-foreground'
+                        )}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                    <Button
+                      className="w-full mt-4"
+                      onClick={() => {
+                        setIsAppointmentModalOpen(true);
+                        setIsOpen(false);
+                      }}
+                    >
+                      Book Appointment
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    'block px-3 py-2 text-base font-medium transition-colors hover:text-primary',
-                    pathname === item.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
-                  )}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="px-3 py-2">
-                <Button className="w-full">Book Appointment</Button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+      />
     </nav>
   );
 }

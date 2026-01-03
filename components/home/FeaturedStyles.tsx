@@ -203,7 +203,7 @@ export function FeaturedStyles() {
       {/* CTA */}
       <div className="text-center mt-6 md:mt-10">
         <Button size="lg" asChild>
-          <Link href="/services">Explore Services</Link>
+          <Link href="/services">Explore More Services</Link>
         </Button>
       </div>
     </section>

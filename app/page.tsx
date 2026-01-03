@@ -3,6 +3,7 @@ import { Services } from '@/components/home/Services';
 import { FeaturedStyles } from '@/components/home/FeaturedStyles';
 import { TestimonialsPreview } from '@/components/home/TestimonialsPreview';
 import { GalleryPreview } from '@/components/home/GalleryPreview';
+import { ConnectSection } from '@/components/home/ConnectSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <GalleryPreview />
       <TestimonialsPreview />
+      <ConnectSection />
     </>
   );
 }

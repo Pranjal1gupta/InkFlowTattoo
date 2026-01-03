@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
+import { X, Maximize2 } from 'lucide-react';
 
 const galleryImages = [
   // Row 1: Large + Medium + Small
@@ -73,6 +73,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 1"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-6 h-6 text-white mx-auto mb-2" />
+                  <span className="text-white text-xs font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(3)}>
@@ -81,6 +87,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 4"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-[2/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(7)}>
@@ -89,6 +101,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 8"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -100,6 +118,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 2"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-6 h-6 text-white mx-auto mb-2" />
+                  <span className="text-white text-xs font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(4)}>
@@ -108,6 +132,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 5"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(9)}>
@@ -116,6 +146,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 10"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -127,6 +163,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 3"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-6 h-6 text-white mx-auto mb-2" />
+                  <span className="text-white text-xs font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-[2/3] overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(6)}>
@@ -135,6 +177,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 7"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(10)}>
@@ -143,6 +191,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 11"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -154,6 +208,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 9"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-[3/4] overflow-hidden rounded-xl cursor-pointer hover:shadow-xl hover:shadow-primary/25 transition-all duration-500 border hover:border-primary/40 hover:scale-105" onClick={() => setSelectedImage(11)}>
@@ -162,6 +222,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 12"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-6 h-6 text-white mx-auto mb-2" />
+                  <span className="text-white text-xs font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
 
             <div className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:shadow-lg hover:shadow-primary/20 transition-all duration-400 border hover:border-primary/30 hover:scale-102" onClick={() => setSelectedImage(12)}>
@@ -170,6 +236,12 @@ export function GalleryPreview() {
                 alt="Tattoo artwork 13"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
               />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <Maximize2 className="w-5 h-5 text-white mx-auto mb-1" />
+                  <span className="text-white text-[10px] font-medium uppercase tracking-widest">Click to Expand</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

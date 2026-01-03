@@ -4,23 +4,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const safetyFeatures = [
   {
     icon: Shield,
-    title: 'Sterilization Standards',
-    description: 'Hospital-grade sterilization equipment and procedures for all tools and surfaces.',
+    title: 'Elite Sterilization',
+    description: 'Hospital-grade sterilization for Tattoos, Piercing, and Nail Art equipment.',
   },
   {
     icon: CheckCircle,
-    title: 'Single-Use Needles',
-    description: 'All needles and tubes are single-use and disposed of safely after each session.',
+    title: 'Single-Use Protocol',
+    description: '100% single-use needles and tools, disposed of safely after every transformation.',
   },
   {
     icon: Award,
-    title: 'Licensed Artists',
-    description: 'All our artists are fully licensed and trained in health and safety protocols.',
+    title: "Alien's Certified",
+    description: "Trained at the world-renowned Alien's Tattoo Academy with elite safety standards.",
   },
   {
     icon: Heart,
-    title: 'Aftercare Support',
-    description: 'Comprehensive aftercare instructions and ongoing support for optimal healing.',
+    title: 'Celebrity Care',
+    description: 'The same red-carpet precision and hygiene trusted by Bollywood stars and athletes.',
   },
 ];
 

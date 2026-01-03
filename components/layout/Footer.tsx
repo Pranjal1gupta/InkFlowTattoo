@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import {
   Instagram,
@@ -27,12 +26,12 @@ export function Footer() {
       {/* Top divider glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {/* Studio Info */}
           <div className="space-y-5 col-span-2 md:col-span-1">
             <h3 className="text-lg sm:text-xl font-black tracking-wide bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              Ink & Soul Studio
+              INK FLOW TATTOO
             </h3>
 
             <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm max-w-sm">
@@ -60,6 +59,16 @@ export function Footer() {
                 className="p-2 rounded-full bg-background/60 dark:bg-white/10 backdrop-blur-md border border-border hover:border-primary/50 hover:bg-primary/10 transition-all hover:scale-110"
               >
                 <Twitter className="h-5 w-5 text-foreground" />
+              </a>
+            </div>
+            <div className="pt-2">
+              <a 
+                href="https://partner.citywitty.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] uppercase tracking-widest text-muted-foreground/60 hover:text-primary transition-colors font-medium"
+              >
+                Powered by CW
               </a>
             </div>
           </div>
@@ -97,10 +106,15 @@ export function Footer() {
               Contact Info
             </h4>
             <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex gap-2 sm:gap-3 items-start">
+              <a 
+                href="https://maps.app.goo.gl/Q4NzeAgX88iTLHn38"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 sm:gap-3 items-start hover:text-primary transition-colors group"
+              >
                 <MapPin className="h-5 w-5 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-1" />
                 <span className="break-words">Shop no-130, Ground floor, Amrit Plaza, Jagat Farm, Greater Noida, Uttar Pradesh 201310</span>
-              </div>
+              </a>
               <div className="flex gap-2 sm:gap-3 items-center">
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>+91-7703827950</span>
@@ -128,7 +142,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border text-center">
-          <p className="text-xs text-muted-foreground tracking-wide">
+          <p 
+            className="text-xs text-muted-foreground tracking-wide cursor-default hover:text-primary transition-colors inline-block" 
+            title="Designed and Developed by Pranjal Gupta"
+          >
             © 2024 Ink & Soul Tattoo Studio. All rights reserved.
           </p>
         </div>
