@@ -1,9 +1,11 @@
 "use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Users } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
+import { AppointmentModal } from "@/components/appointment/AppointmentModal";
 
 const tattooPatternUrl =
   "url('data:image/svg+xml,%3Csvg width=%22120%22 height=%22120%22 viewBox=%220 0 120 120%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22%3E%3Ccircle cx=%2260%22 cy=%2260%22 r=%223%22 fill=%22%23ff6b35%22 opacity=%220.1%22/%3E%3Ccircle cx=%2220%22 cy=%2230%22 r=%222%22 fill=%22%23221f1f%22 opacity=%220.15%22/%3E%3Ccircle cx=%22100%22 cy=%2280%22 r=%221.5%22 fill=%22%23ff4757%22 opacity=%220.1%22/%3E%3Cpath d=%22M30 90 Q60 70 90 90%22 stroke=%22%23221f1f%22 stroke-width=%221%22 opacity=%220.08%22/%3E%3C/g%3E%3C/svg%3E')";
@@ -69,6 +71,7 @@ const svgAnimateVariants = {
 };
 
 export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0.5]);
   const y = useTransform(scrollY, [0, 300], [0, 100]);
@@ -737,6 +740,7 @@ export function Hero() {
             <Button
               size="lg"
               className="group text-base px-10 py-6 shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r from-primary to-destructive/90 text-white font-semibold border-2 border-transparent hover:border-white/50 backdrop-blur-sm"
+              onClick={() => setIsModalOpen(true)}
             >
               <Calendar className="mr-3 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Book Your Session
@@ -880,7 +884,10 @@ export function Hero() {
         />
       </div>
 
-
+      <AppointmentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }

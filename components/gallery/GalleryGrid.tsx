@@ -169,7 +169,7 @@ const galleryImages = [
     artist: 'Dharvendra Rajput',
   },
   {
-    src: 'https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/559545658_18291897292283113_1750511619829188285_n_hu31ao.jpg',
+    src: 'https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/559545658_18291897292283113_1750511619829188265_n_hu31ao.jpg',
     alt: 'Realism tattoo',
     category: 'Realism',
     artist: 'Rohit Kumar',
