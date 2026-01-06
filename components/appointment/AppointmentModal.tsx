@@ -82,35 +82,35 @@ export function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const formattedDate = format(values.date, 'PPP');
-    const message = ` Hello Tatoo Tribe!
+//   function onSubmit(values: z.infer<typeof formSchema>) {
+//     const formattedDate = format(values.date, 'PPP');
+//     const message = ` Hello Tatoo Tribe!
 
-I would like to book an appointment for a tattoo. Here are my details:
+// I would like to book an appointment for a tattoo. Here are my details:
 
- Name: ${values.name}
- Email: ${values.email}
- Phone: ${values.phone}
- Service: ${values.service}
- Artist: ${values.artist}
- Preferred Date: ${formattedDate}
+//  Name: ${values.name}
+//  Email: ${values.email}
+//  Phone: ${values.phone}
+//  Service: ${values.service}
+//  Artist: ${values.artist}
+//  Preferred Date: ${formattedDate}
 
- Tattoo Idea/Message:
-${values.message}   
+//  Tattoo Idea/Message:
+// ${values.message}   
 
-Thank you!`;
+// Thank you!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/917703827950?text=${encodedMessage}`;
+//     const encodedMessage = encodeURIComponent(message);
+//     const whatsappUrl = `https://wa.me/917703827950?text=${encodedMessage}`;
 
-    window.open(whatsappUrl, '_blank');
+//     window.open(whatsappUrl, '_blank');
 
-    toast.success('Redirecting to WhatsApp...', {
-      description: 'Please send the message in WhatsApp to confirm.',
-    });
-    form.reset();
-    onClose();
-  }
+//     toast.success('Redirecting to WhatsApp...', {
+//       description: 'Please send the message in WhatsApp to confirm.',
+//     });
+//     form.reset();
+//     onClose();
+//   }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -122,7 +122,8 @@ Thank you!`;
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4">
+          <form className="space-y-4 py-4">
+          {/* <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4"> */}
             <FormField
               control={form.control}
               name="name"

@@ -11,42 +11,42 @@ const styles = [
     name: "Realism",
     description: "Photorealistic tattoos with incredible detail and depth",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/realism_zfkefy.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/realism_zfkefy.jpg",
   },
   {
     name: "Traditional",
     description:
       "Classic American traditional style with bold lines and vibrant colors",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/traditional_e4uttb.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/traditional_e4uttb.jpg",
   },
   {
     name: "Neo-Traditional",
     description:
       "Modern twist on classic style with intricate details and bold shading",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/nontraditional_o5et64.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/nontraditional_o5et64.jpg",
   },
   {
     name: "Minimalist",
     description:
       "Clean, simple designs with elegant line work and negative space",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/minimalistic_mmvwen.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/minimalistic_mmvwen.jpg",
   },
   {
     name: "Japanese",
     description:
       "Traditional Irezumi with mythical creatures and dramatic backgrounds",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/Japanese_ze0ljz.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/Japanese_ze0ljz.jpg",
   },
   {
     name: "Portrait",
     description:
       "Hyper-detailed portraits capturing the essence of your loved ones",
     image:
-      "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/Portrait_qvmui7.jpg",
+      "https://res.hello.com/dlifnml9x/image/upload/v1765886636/Portrait_qvmui7.jpg",
   },
 ];
 
