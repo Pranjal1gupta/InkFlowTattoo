@@ -8,29 +8,29 @@ import { X, Maximize2 } from "lucide-react";
 
 const galleryImages = [
   // Row 1: Large + Medium + Small
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/559545658_18291897292283113_1750511619829188265_n_hu31ao.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/572734626_17953356378040405_6307863326780196306_n_sv5qdz.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/568506296_17952354753040405_8365654209002739960_n_aut3sw.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/559545658_18291897292283113_1750511619829188265_n_hu31ao.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/572734626_17953356378040405_6307863326780196306_n_sv5qdz.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/568506296_17952354753040405_8365654209002739960_n_aut3sw.jpg",
 
   // Row 2: Small + Large + Medium
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/474144920_17920343796040405_4696761388915164172_n_zofycv.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/470686941_18257379649283113_5054945575176911260_n_eg61ch.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889122/470974549_934707575281483_7229704689389210383_n_gq0h5m.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/474144920_17920343796040405_4696761388915164172_n_zofycv.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/470686941_18257379649283113_5054945575176911260_n_eg61ch.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889122/470974549_934707575281483_7229704689389210383_n_gq0h5m.jpg",
 
   // Row 3: Medium + Small + Large
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/Japanese_ze0ljz.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/traditional_e4uttb.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765890431/587237693_17956189086040405_3698477966883008414_n_inc7s2.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765886636/Japanese_ze0ljz.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765886636/traditional_e4uttb.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765890431/587237693_17956189086040405_3698477966883008414_n_inc7s2.jpg",
 
   // Row 4: Small + Medium + Large + Small
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765886636/Portrait_qvmui7.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889121/574187747_17953355388040405_7205668849576268010_n_bk0lu7.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889121/587029319_17955041421040405_2413674960516867788_n_sthmef.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889484/587812875_17956460610040405_2646320563805426057_n_f2pe9i.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765886636/Portrait_qvmui7.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889121/574187747_17953355388040405_7205668849576268010_n_bk0lu7.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889121/587029319_17955041421040405_2413674960516867788_n_sthmef.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889484/587812875_17956460610040405_2646320563805426057_n_f2pe9i.jpg",
 
   // Row 5: ❌ Not included (insufficient images)
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889814/503653212_1422997529115439_1092929154008277907_n_ovsecg.jpg",
-  "https://res.cloudinary.com/dlifnml9x/image/upload/v1765889814/503945321_1752354485320281_1521602636110283779_n_qskmtu.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889814/503653212_1422997529115439_1092929154008277907_n_ovsecg.jpg",
+  "https://res.hello.com/dlifnml9x/image/upload/v1765889814/503945321_1752354485320281_1521602636110283779_n_qskmtu.jpg",
 ];
 export function GalleryPreview() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
