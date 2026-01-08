@@ -6,32 +6,28 @@ import Link from "next/link";
 
 const testimonials = [
   {
-    name: "Ananya Sharma",
+    name: "Vishal Rathor",
     rating: 5,
-    text: "The artist understood exactly what I wanted and guided me patiently through the design. The detailing and finish are absolutely beautiful. Felt very comfortable throughout the session.",
-    image:
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+    text: "Amazing experience! The artist was incredibly talented and made me feel comfortable throughout the entire process. The studio is clean, professional, and the artwork exceeded my expectations.",
+    image: "https://res.cloudinary.com/dlifnml9x/image/upload/v1766999147/Himanshu_Gupta_tkssn0.png",
   },
   {
-    name: "Rohit Verma",
+    name: "Gita Yadav",
     rating: 5,
-    text: "Very professional studio with high hygiene standards. The realism tattoo turned out even better than I imagined. Totally worth the time and money.",
-    image:
-      "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+    text: "Best tattoo studio in the city. Professional, clean, and the artwork is absolutely stunning. Rohit did an incredible job on my portrait tattoo - it looks exactly like the photo!",
+    image: "https://res.cloudinary.com/dlifnml9x/image/upload/v1767448889/m3_izwcpr.jpg",
   },
   {
-    name: "Priya Nair",
+    name: "Kartik Singh",
     rating: 5,
-    text: "They redesigned my old tattoo so beautifully that it feels brand new. The artist explained the aftercare properly and followed up as well. Highly recommended.",
-    image:
-      "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+    text: "They brought my vision to life perfectly. The attention to detail and artistry is unmatched. The customized design they created is something I will cherish forever.",
+    image: "https://res.cloudinary.com/dlifnml9x/image/upload/v1767641589/kartiksingh_bxytbk.png",
   },
   {
-    name: "Arjun Mehta",
+    name: "Arushi Panday",
     rating: 5,
-    text: "Got my Japanese sleeve done here and the experience was amazing. The colour work, composition, and patience of the artist were top class. Truly impressed.",
-    image:
-      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+    text: "Exceptional service from start to finish. The consultation was thorough, the artist was skilled, and the aftercare instructions were detailed. Highly recommend!",
+    image: "https://res.cloudinary.com/dlifnml9x/image/upload/v1766998388/Tanwi_Singh_nr0njv.png",
   },
 ];
 
